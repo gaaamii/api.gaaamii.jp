@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if @current_user %>
+      <header>
+        logged in as <%= @current_user.email %>
+      </header>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
