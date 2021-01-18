@@ -39,7 +39,7 @@ module BlogApiServer
 
     config.session_store(:cookie_store, {
       key: 'blog_api_server_session',
-      same_site: :lax,
+      same_site: :strict,
       httponly: true
     })
     config.middleware.use ActionDispatch::Cookies
