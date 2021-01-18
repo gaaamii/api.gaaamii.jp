@@ -20,8 +20,7 @@ class UserSessionsController < ApplicationController
     if @user
       render plain: 'Login Successful as ' + @user.email
     else
-      flash.now[:alert] = 'Login failed'
-      render action: 'new'
+      render plain: 'Login failed'
     end
   end
 
