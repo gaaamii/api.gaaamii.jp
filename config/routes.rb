@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :users
 
   # sessions
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'ping' => 'user_sessions#ping', :as => :ping
-  post 'logout' => 'user_sessions#destroy', :as => :logout
-  post 'user_sessions' => 'user_sessions#create'
+  get '/login' => 'user_sessions#new', :as => :login
+  get '/user_sessions/ping' => 'user_sessions#ping', :as => :ping
+  post '/logout' => 'user_sessions#destroy', :as => :logout
+  post '/user_sessions' => 'user_sessions#create'
 
   # posts
   get "/posts" => "posts#index"
