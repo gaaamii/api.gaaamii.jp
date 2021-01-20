@@ -9,8 +9,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins ENV["BLOG_SERVER_ORIGIN"]
 
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    resource '/user_sessions/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    resource '/posts/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
   end
 end
