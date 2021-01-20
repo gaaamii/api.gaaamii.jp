@@ -7,9 +7,7 @@ class ApplicationController < ActionController::API
   private
 
   def admin?
-    Rails.logger.info("@current_user")
-    Rails.logger.info(@current_user)
-    @current_user && @current_user.email == ADMIN_USER_EMAIL 
+    current_user && current_user.email == ADMIN_USER_EMAIL 
   end
 
   def require_admin_login
