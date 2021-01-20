@@ -12,13 +12,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    Post.create!(post_params)
     head :created
   end
 
   def update
     post = Post.find(params[:post_id])
-    post.update(post_params)
+    post.update!(post_params)
     head :ok
   end
 

@@ -3,7 +3,7 @@ class UserSessionsController < ApplicationController
   skip_before_action :require_admin_login
 
   def ping
-    if 
+    if admin?
       head :ok
     else
       head :unauthorized
