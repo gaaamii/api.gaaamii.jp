@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :require_admin_login, only: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
     render json: @posts
   end
 
@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    Rails.logger.info(params)
     Post.create!(post_params)
     head :created
   end
