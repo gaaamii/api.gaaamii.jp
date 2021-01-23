@@ -1,7 +1,4 @@
-class UserSessionsController < ApplicationController
-  include ActionController::RequestForgeryProtection
-  skip_before_action :require_admin_login
-
+class UserSessionsController < ActionController::Base
   def ping
     if admin?
       head :ok
