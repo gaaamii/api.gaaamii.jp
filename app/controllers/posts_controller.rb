@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :require_admin_login, only: [:index, :show]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.order(published_at: :desc)
     render json: @posts
   end
 
