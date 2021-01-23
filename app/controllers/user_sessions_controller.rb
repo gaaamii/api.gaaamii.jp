@@ -1,4 +1,6 @@
 class UserSessionsController < ActionController::Base
+  include SessionsConcern
+
   def ping
     if admin?
       head :ok
