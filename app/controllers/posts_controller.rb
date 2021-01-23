@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    Rails.logger.info(params)
     Post.create!(post_params)
     head :created
   end
