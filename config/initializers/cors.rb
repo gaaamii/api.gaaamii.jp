@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins [ENV["BLOG_SERVER_ORIGIN"], "http://localhost:3000"]
+    origins ENV["BLOG_SERVER_ORIGIN"]
 
     resource '/user_sessions/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     resource '/posts/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
