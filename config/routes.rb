@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   # posts
   get "/posts" => "posts#index"
-  get "/posts/:post_id" => "posts#show"
+  get "/posts/:id" => "posts#show"
   post "/posts" => "posts#create"
-  put "/posts/:post_id" => "posts#update"
-  delete "/posts/:post_id" => "posts#destroy"
+  put "/posts/:id" => "posts#update"
+  delete "/posts/:id" => "posts#destroy"
 end
