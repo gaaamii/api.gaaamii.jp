@@ -1,1 +1,1 @@
-# blog-api-server
+api.gaaamii.jp のソースコード。
