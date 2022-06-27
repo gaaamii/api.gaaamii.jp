@@ -213,6 +213,7 @@ DEPENDENCIES
   bootsnap
   byebug
   factory_bot_rails
+  jwt
   listen (~> 3.7)
   pg
   puma
