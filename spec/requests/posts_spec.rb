@@ -12,9 +12,6 @@ RSpec.describe PostsController, type: :request do
   end
 
   describe "(POST) /posts" do
-    let(:user) { FactoryBot.create(:user) }
-    before { login(user.email, 'test_password') }
-
     let(:post_params) do
       {
         post: {
@@ -25,9 +22,21 @@ RSpec.describe PostsController, type: :request do
       }
     end
 
-    it "returns 201 http status" do
-      post "/posts", params: post_params
-      expect(response).to have_http_status(:created)
+    context 'when authenticated' do
+      let(:user) { FactoryBot.create(:user) }
+      before { login(user.email, 'test_password') }
+
+      it "returns 201 http status" do
+        post "/posts", params: post_params
+        expect(response).to have_http_status(:created)
+      end
+    end
+
+    context 'when not authenticated' do
+      it "returns 401 http status" do
+        post "/posts", params: post_params
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 end
