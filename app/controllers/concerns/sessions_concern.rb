@@ -1,13 +1,11 @@
 module SessionsConcern
-  ADMIN_USER_EMAIL = ENV["ADMIN_USER_EMAIL"]
-
   private
 
-  def admin?
-    current_user && current_user.email == ADMIN_USER_EMAIL 
+  def require_admin_login_by_sorcery
+    head :unauthorized unless admin?
   end
 
-  def require_admin_login
-    head :unauthorized unless admin?
+  def admin?
+    current_user && current_user.admin?
   end
 end
