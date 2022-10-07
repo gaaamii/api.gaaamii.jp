@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   post "/posts" => "posts#create"
   put "/posts/:id" => "posts#update"
   delete "/posts/:id" => "posts#destroy"
+
+  # cloudinary signature
+  get '/cloudinary_signature' => 'cloudinary_signature#show'
 end
