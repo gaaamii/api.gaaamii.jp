@@ -10,6 +10,7 @@ gem 'puma'
 gem 'bootsnap'
 gem 'sorcery'
 gem 'rack-cors'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
