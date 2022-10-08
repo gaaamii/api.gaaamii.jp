@@ -21,7 +21,8 @@ RSpec.describe PostsController, type: :request do
         subject
         expect(response).to have_http_status(:ok)
         expect(JSON.parse(response.body)).to include({
-          'signature' => be_a(String)
+          'signature' => be_a(String),
+          'api_key' => be_a(Integer)
         })
       end
     end
