@@ -8,14 +8,16 @@ module Admin
     private
 
     def query_posts
-      case params[:status]
-      when 'draft'
-        Post.draft
-      when 'published'
-        Post.published
-      else
-        Post.all
-      end
+      posts = case params[:status]
+              when 'draft'
+                Post.draft
+              when 'published'
+                Post.published
+              else
+                Post.all
+              end
+
+      posts.order(created_at: :desc)
     end
   end
 end
