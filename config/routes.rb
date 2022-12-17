@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   put "/posts/:id" => "posts#update"
   delete "/posts/:id" => "posts#destroy"
 
+  # admin only
+  namespace :admin do
+    get "/posts" => "posts#index"
+  end
+
   # cloudinary signature
   get '/cloudinary_signature' => 'cloudinary_signature#show'
 end
