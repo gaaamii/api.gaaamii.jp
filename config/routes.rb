@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # admin only
   namespace :admin do
     get "/posts" => "posts#index"
+    get "/posts/:post_id" => "posts#show"
   end
 
   # cloudinary signature

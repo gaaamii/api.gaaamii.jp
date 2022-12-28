@@ -5,6 +5,11 @@ module Admin
       render json: @posts
     end
 
+    def show
+      post = Post.find(params[:post_id])
+      render json: post
+    end
+
     private
 
     def query_posts
