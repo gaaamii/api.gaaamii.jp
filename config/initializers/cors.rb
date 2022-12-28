@@ -11,6 +11,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
     resource '/user_sessions/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     resource '/posts/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+    resource '/admin/posts/*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
     resource '/cloudinary_signature', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
   end
 end
