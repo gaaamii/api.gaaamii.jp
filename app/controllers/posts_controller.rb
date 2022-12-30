@@ -36,11 +36,9 @@ class PostsController < ApplicationController
     url = "#{ENV['BLOG_SERVER_ORIGIN']}/api/revalidate?post_id=#{post_id}&secret=#{ENV['BLOG_SERVER_SECRET']}"
     response = Net::HTTP.get_response(url)
     response.value
-
-    rescue => e
-      Rails.logger.error 'Post revalidation failed.'
-      Rails.logger.error e
-    end
+  rescue => e
+    Rails.logger.error 'Post revalidation failed.'
+    Rails.logger.error e
   end
 
   def post_params
