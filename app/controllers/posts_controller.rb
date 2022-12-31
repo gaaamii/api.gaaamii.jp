@@ -37,6 +37,7 @@ class PostsController < ApplicationController
     Rails.logger.info "Revalidate request to #{url}"
     response = Net::HTTP.get_response(URI.parse(url))
     response.value
+    Rails.logger.info "Revalidation succeeded."
   rescue => e
     Rails.logger.error 'Post revalidation failed.'
     Rails.logger.error e
