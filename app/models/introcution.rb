@@ -1,0 +1,2 @@
+class Introcution < ApplicationRecord
+end
