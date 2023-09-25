@@ -81,9 +81,24 @@ RSpec.describe LinksController, type: :request do
           expect(response).to have_http_status(:no_content)
         end
       end
+
+      context 'when existing link is not included' do
+        let!(:existing_link) do
+          FactoryBot.create(:link, name: 'Existing Example', url: 'https://www.example.com/existing')
+        end
+        let(:links_params) do
+          { links: [] }
+        end
+
+        it 'deletes existing link' do
+          expect { subject }.to change(Link, :count).by(-1)
+          expect { existing_link.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+      end
     end
 
     context 'not authenticated' do
+      let(:links_params) { { links: [] } }
       it "returns 401 http status" do
         subject
         expect(response).to have_http_status(:unauthorized)
