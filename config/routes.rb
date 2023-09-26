@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete "/posts/:id" => "posts#destroy"
 
   # links
+  get "/links" => "links#index"
   put "/links" => "links#update"
 
   # admin only

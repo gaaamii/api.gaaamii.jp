@@ -1,4 +1,9 @@
 class LinksController < ApplicationController
+  def index
+    links = Link.limit(10)
+    render json: serialize_links(links)
+  end
+
   def update
     # パラメータで指定されたリンクは登録or更新する
     links_params.each do |link_param|
@@ -19,5 +24,11 @@ class LinksController < ApplicationController
 
   def links_params
     params.permit(links: [:name, :url])[:links]
+  end
+
+  def serialize_links(links)
+    links.map do |link|
+      { id: link.id, name: link.name, url: link.url }
+    end
   end
 end
