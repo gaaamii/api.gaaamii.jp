@@ -105,4 +105,42 @@ RSpec.describe LinksController, type: :request do
       end
     end
   end
+
+  describe "(GET) /links" do
+    subject do
+      get "/links"
+    end
+
+    context 'authenticated' do
+      let(:user) { FactoryBot.create(:user) }
+      let!(:links) {
+        FactoryBot.create_list(:link, 2)
+      }
+      before { login(user.email, 'test_password') }
+
+      it "returns 200 status and links response" do
+        subject
+        expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)).to eq([
+          {
+            'id' => links.first.id,
+            'name' => links.first.name,
+            'url' => links.first.url
+          },
+          {
+            'id' => links.second.id,
+            'name' => links.second.name,
+            'url' => links.second.url
+          },
+        ])
+      end
+    end
+
+    context 'not authenticated' do
+      it "returns 401 http status" do
+        subject
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
 end
