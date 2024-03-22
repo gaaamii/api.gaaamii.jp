@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create!(post_params)
+    post = Post.create!(post_params)
     request_to_revalidate_page(post.id)
     head :created
   end
