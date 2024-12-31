@@ -116,7 +116,7 @@ GEM
     irb (1.14.2)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jwt (2.9.3)
+    jwt (2.10.1)
       base64
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
