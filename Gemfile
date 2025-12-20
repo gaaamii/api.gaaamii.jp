@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.3.0'
 
 gem 'rails', '~> 8.0.2'
-gem 'jwt'
 gem 'pg'
 gem 'puma'
 gem 'bootsnap'

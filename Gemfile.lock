@@ -274,7 +274,6 @@ DEPENDENCIES
   byebug
   cloudinary
   factory_bot_rails
-  jwt
   listen (~> 3.8)
   pg
   puma
