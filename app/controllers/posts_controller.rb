@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :require_admin_login, only: [:index, :show]
+  skip_before_action :require_admin_login_by_sorcery, only: [:index, :show]
 
   def index
     @posts = Post.list
