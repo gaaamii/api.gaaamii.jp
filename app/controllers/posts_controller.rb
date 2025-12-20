@@ -33,9 +33,14 @@ class PostsController < ApplicationController
   private
 
   def request_to_revalidate_page(post_id)
-    url = "#{ENV['BLOG_SERVER_ORIGIN']}/api/revalidate?post_id=#{post_id}&secret=#{ENV['BLOG_SERVER_SECRET']}"
-    Rails.logger.info "Revalidate request to #{url}"
-    response = Net::HTTP.get_response(URI.parse(url))
+    uri = URI.parse("#{ENV['BLOG_SERVER_ORIGIN']}/api/revalidate")
+    uri.query = URI.encode_www_form(post_id: post_id, secret: ENV['BLOG_SERVER_SECRET'])
+
+    sanitized_uri = uri.dup
+    sanitized_uri.query = URI.encode_www_form(post_id: post_id, secret: '[FILTERED]')
+    Rails.logger.info "Revalidate request to #{sanitized_uri}"
+
+    response = Net::HTTP.get_response(uri)
     response.value
     Rails.logger.info "Revalidation succeeded."
   rescue => e
